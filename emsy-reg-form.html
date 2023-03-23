@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz Registration</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fav-icon  -->
+  <link rel="icon" href="favicon.png">
+	<style>
+		/* Basic Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.container div {
+  display: flex;
+  gap: 5px;
+}
+
+.checkbox {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.checkbox label {
+  display: inline-block;
+  font-size: 14px;
+  color: #666;
+}
+
+input[type="submit"] {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type="submit"]:hover {
+  background-color: #0c7cd5;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 5px;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    float: none;
+  }
+}
+	</style>
+
+    <!-- Script -->
+    <script>
+        // Smooth Scroll to top when clicking on submit button
+document.querySelector("form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// Change background color of checkbox when checked
+document.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      checkbox.parentElement.style.backgroundColor = "#f1f1f1";
+    } else {
+      checkbox.parentElement.style.backgroundColor = "transparent";
+    }
+  });
+});
+    </script>
+
+</head>
+<body>
+	<h1>Quiz Registration</h1>
+	<form action="db-reg-form-data.php" method="POST">
+		<label for="name">Name *</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="dob">DOB *</label>
+		<input type="date" id="dob" name="dob" required min="1990-01-01" max="2006-12-31">
+
+		<label for="gender">Gender *</label>
+		<div class="container">
+			<div>
+				<input type="radio" id="male" name="gender" value="male" required>
+				<label for="male">Male</label>
+			</div>
+			<div>
+				<input type="radio" id="female" name="gender" value="female">
+				<label for="female">Female</label>
+			</div>
+			<div>
+				<input type="radio" id="others" name="gender" value="others">
+        <label for="others">Others</label>
+      </div>
+    </div>
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" minlength="10" maxlength="10" required>    
+            
+    <label for="email">E-mail *</label>
+    <input type="email" id="email" name="email" required>
+            
+    <label for="class_trade">Class / Trade *</label>
+    <input type="text" id="class_trade" name="class_trade" required>
+            
+    <label for="school_college">School / College *</label>
+    <input type="text" id="school_college" name="school_college" required>
+            
+    <label for="place">Place *</label>
+    <input type="text" id="place" name="place" required>
+            
+    <label for="medium">Medium of Exam *</label>
+    <select id="medium" name="medium" required>
+      <option value="">Select Medium</option>
+      <option value="hindi">Hindi</option>
+      <option value="english">English</option>
+    </select>
+            
+    <div class="checkbox">
+      <input type="checkbox" id="policy" name="policy" required>
+      <label for="policy">I agree to the policies of this website *</label>
+    </div>
+            
+    <input type="submit" value="Proceed to Registration Fee Payment">
+</form>
+
+        </body>
+        </html>
